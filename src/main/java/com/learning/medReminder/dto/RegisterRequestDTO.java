@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MedicineDTO {
+public class RegisterRequestDTO {
     private String name;
-    private String dosage;
-    private List<LocalTime> times;
+    private String email;
+    private String username;
+    private String password;
 }
 

@@ -28,15 +28,9 @@ public class UserController {
                         user.getId(),
                         user.getName(),
                         user.getEmail(),
-                        user.getMedicines().stream()
-                                .map(med -> new MedicineDTO(
-                                        med.getName(),
-                                        med.getDosage(),
-                                        med.getTimes(),
-                                        med.getUser().getId()
-                                ))
-                                .toList()
-                )).toList();
+                        null   // ❗ do NOT include medicines here
+                ))
+                .toList();
     }
 
 

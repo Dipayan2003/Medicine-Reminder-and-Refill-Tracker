@@ -17,24 +17,27 @@ public class MedicineController {
 
     @PostMapping
     public MedicineDTO createMedicine(@RequestBody MedicineDTO dto) {
+
         Medicine created = medicineService.createMedicine(dto);
+
         return new MedicineDTO(
                 created.getName(),
                 created.getDosage(),
-                created.getTimes(),
-                created.getUser().getId()
+                created.getTimes()
         );
     }
 
-    @GetMapping("/user/{userId}")
-    public List<MedicineDTO> getUserMedicines(@PathVariable Long userId) {
-        return medicineService.getAllMedicinesForUser(userId).stream()
+    @GetMapping("/my")
+    public List<MedicineDTO> getMyMedicines() {
+
+        return medicineService.getMyMedicines()
+                .stream()
                 .map(med -> new MedicineDTO(
                         med.getName(),
                         med.getDosage(),
-                        med.getTimes(),
-                        med.getUser().getId()
+                        med.getTimes()
                 ))
                 .toList();
     }
 }
+
